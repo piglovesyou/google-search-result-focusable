@@ -1,4 +1,4 @@
-var manifest = require("../src/manifest.json"),
+var manifest = require("../src/manifest"),
     fileSystem = require("fs"),
     path = require("path"),
     env = require("./env");

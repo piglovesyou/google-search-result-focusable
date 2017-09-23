@@ -1,20 +1,15 @@
 {
-  "name": "google-search-results-hot-keys",
-  "version": "0.0.1",
-  "description": "For ones that want to select Google Search results by hot keys",
+  "name": "google-search-results-focusable",
+  "version": "0.2.1",
+  "description": "Just hit TAB and ENTER keys to select one of Google Search results.",
   "scripts": {
-    "build": "node utils/build.js",
+    "build": "NODE_ENV=production node utils/build.js && zip -r build.zip build",
     "start": "node utils/webserver.js"
   },
   "dependencies": {
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.11.2",
-    "fs-extra": "^0.30.0",
-    "html-loader": "^0.4.5",
-    "html-webpack-plugin": "2.24.1",
-    "style-loader": "^0.13.0",
-    "webpack": "2.2.1",
-    "webpack-dev-server": "^2.3.0",
-    "write-file-webpack-plugin": "3.4.2"
+    "fs-extra": "^4.0.2",
+    "webpack": "^3.6.0",
+    "webpack-closure-compiler": "^2.1.5",
+    "webpack-dev-server": "^2.8.2"
   }
 }

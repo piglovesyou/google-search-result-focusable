@@ -1,5 +1,5 @@
 {
-  "name": "Google Search Results Hot Keys",
+  "name": "Hit TAB and ENTER on Google Search Results",
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
