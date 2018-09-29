@@ -1,6 +1,6 @@
 {
   "name": "google-search-results-focusable",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Just hit TAB and ENTER keys to select one of Google Search results.",
   "scripts": {
     "build": "NODE_ENV=production node utils/build.js && zip -r build.zip build",
