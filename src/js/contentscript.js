@@ -1,13 +1,9 @@
 main();
+
 function main() {
   const originalFocusableEls = document.querySelectorAll('a[href],button,input,[tabindex]');
   const textboxEl = document.querySelector('input[type="text"]');
-  const candidateEls = document.querySelectorAll(createItemQuery());
-
-  function createItemQuery() {
-    // Skip ads
-    return '#res h3 a:first-of-type, #foot a[href]';
-  }
+  const candidateEls = findCandidateEls();
 
 // Not to be focued on original links and so on
   [...originalFocusableEls].forEach((e) => {
@@ -34,4 +30,20 @@ function main() {
   }
 
   textboxEl.focus();
+}
+
+function findCandidateEls() {
+  // Skip ads
+
+  // Search results
+  const els = [
+    // Ordinal search results
+    ...Array.from(document.querySelectorAll('#res h3'))
+        .map(e => e.parentNode)
+        .filter(e => e.tagName === 'A'),
+    // Nested search results and footer pager links
+    ...document.querySelectorAll('#res h3 a:first-of-type, #foot a[href]'),
+  ];
+
+  return els;
 }
