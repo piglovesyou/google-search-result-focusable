@@ -1,11 +1,21 @@
 # google-search-results-focusable
 
-Just hit TAB and ENTER key to select one of Google Search Result.
+Just hit TAB and ENTER in Google search results.
 
-* [Install page](https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee)
-* [Github page](https://piglovesyou.github.io/google-search-result-focusable/)
+* [👉 Install](https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee)
+* [👉 Github page](https://piglovesyou.github.io/google-search-result-focusable/)
 
+# Develop
+
+* In `chrome://extensions/` load "unpacked" of `./build`
+* Run `yarn build`
+
+TODO: Enable `yarn start` for comfortable development
 
 # Publish
 
-https://chrome.google.com/webstore/developer/dashboard
+* `yarn build`
+* Upload `build.zip` to https://chrome.google.com/webstore/developer/dashboard
+
+Thanks for
+* Boilerplate: https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate
