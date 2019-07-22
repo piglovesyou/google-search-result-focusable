@@ -20,16 +20,8 @@ function main() {
 
 // To focus on the first candidate when user hit a first TAB key
   if (candidateEls.length) {
-    textboxEl.addEventListener('focus', onFocusOnTextboxEl, true);
-
-    function onFocusOnTextboxEl(e) {
-      candidateEls[0].focus();
-      textboxEl.removeEventListener('focus', onFocusOnTextboxEl, true);
-      e.preventDefault();
-    }
+    candidateEls[0].focus();
   }
-
-  textboxEl.focus();
 }
 
 function findCandidateEls() {
