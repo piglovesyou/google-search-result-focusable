@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "webpack": "^4.41.2",
+    "webpack": "^4.41.3",
     "webpack-closure-compiler": "^2.1.6"
   }
 }
