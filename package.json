@@ -7,7 +7,7 @@
     "start": "node utils/webserver.js"
   },
   "dependencies": {
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "webpack": "^4.42.0",
     "webpack-closure-compiler": "^2.1.6"
   }
