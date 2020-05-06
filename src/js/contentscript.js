@@ -1,36 +1,32 @@
 main();
 
 function main() {
-  const candidateEls = findCandidateEls();
+  const searchResults = findSearchResults();
 
-  // Suppress to focue on original focusables
   const originalFocusableEls = $$('a[href],button,input,[tabindex]');
-  for (let el of originalFocusableEls) {
+  originalFocusableEls.forEach((el) => {
     el.setAttribute('tabindex', '-1');
-  }
+  })
 
-  // To be able to focus only on textbox and search results
   const textboxEl = document.querySelector('input[type="text"]');
-  for (let el of [textboxEl, ...candidateEls]) {
+  [textboxEl, ...searchResults].forEach(el => {
     el.setAttribute('tabindex', '1');
-  }
+  })
 
   // To focus on the first candidate when user hit a first TAB key
-  if (candidateEls.length) {
-    candidateEls[0].focus();
+  if (searchResults.length) {
+    searchResults[0].focus();
   }
 }
 
-function findCandidateEls() {
-  // Search results
-  return [
-    // Ordinal search results
-    ...$$('#res h3')
+function findSearchResults() {
+  const topLevelResults = Array.from($$('#res h3'))
     .map(e => e.parentNode)
-    .filter(isAnchorElement),
-    // Nested search results and footer pager links
-    ...$$('#res h3 a:first-of-type, #foot a[href]'),
-  ];
+    .filter(isAnchorElement);
+
+  const nestedResults = $$('#res h3 a:first-of-type, #foot a[href]');
+
+  return [...topLevelResults, ...nestedResults];
 }
 
 /**
