@@ -1,41 +1,52 @@
 main();
 
 function main() {
-  const originalFocusableEls = document.querySelectorAll('a[href],button,input,[tabindex]');
-  const textboxEl = document.querySelector('input[type="text"]');
   const candidateEls = findCandidateEls();
 
-// Not to be focued on original links and so on
-  [...originalFocusableEls].forEach((e) => {
-    e.setAttribute('tabindex', '-1');
-  });
+  // Suppress to focue on original focusables
+  const originalFocusableEls = $$('a[href],button,input,[tabindex]');
+  for (let el of originalFocusableEls) {
+    el.setAttribute('tabindex', '-1');
+  }
 
-// To be able to focus only on textbox and search results
-  [
-    textboxEl,
-    ...candidateEls
-  ].forEach((el) => {
+  // To be able to focus only on textbox and search results
+  const textboxEl = document.querySelector('input[type="text"]');
+  for (let el of [textboxEl, ...candidateEls]) {
     el.setAttribute('tabindex', '1');
-  });
+  }
 
-// To focus on the first candidate when user hit a first TAB key
+  // To focus on the first candidate when user hit a first TAB key
   if (candidateEls.length) {
     candidateEls[0].focus();
   }
 }
 
 function findCandidateEls() {
-  // Skip ads
-
   // Search results
-  const els = [
+  return [
     // Ordinal search results
-    ...Array.from(document.querySelectorAll('#res h3'))
-        .map(e => e.parentNode)
-        .filter(e => e.tagName === 'A'),
+    ...$$('#res h3')
+    .map(e => e.parentNode)
+    .filter(isAnchorElement),
     // Nested search results and footer pager links
-    ...document.querySelectorAll('#res h3 a:first-of-type, #foot a[href]'),
+    ...$$('#res h3 a:first-of-type, #foot a[href]'),
   ];
-
-  return els;
 }
+
+/**
+ * @param {Element} e
+ * @returns {boolean}
+ */
+function isAnchorElement(e) {
+  return e.tagName === 'A';
+}
+
+/**
+ * @param {string} sel
+ * @param {Element=} parent
+ * @returns {Iterable!}
+ */
+function $$(sel, parent) {
+  return /** @type {Iterable!} */((parent || document).querySelectorAll(sel));
+}
+
