@@ -1,13 +1,11 @@
-var manifest = require("../src/manifest"),
-    fileSystem = require("fs"),
-    path = require("path"),
-    env = require("./env");
+const manifest = require('../src/manifest');
+const fs = require('fs');
+const path = require('path');
 
-// generates the manifest file using the package.json informations
 manifest.description = process.env.npm_package_description;
 manifest.version = process.env.npm_package_version;
 
-fileSystem.writeFileSync(
+fs.writeFileSync(
   path.join(__dirname, "../build/manifest.json"),
   JSON.stringify(manifest)
 );

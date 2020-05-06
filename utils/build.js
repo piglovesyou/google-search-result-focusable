@@ -1,7 +1,8 @@
-var webpack = require("webpack"),
-    config = require("../webpack.config");
 
 require("./prepare");
+
+var webpack = require("webpack"),
+    config = require("../webpack.config");
 
 delete config.chromeExtensionBoilerplate;
 
