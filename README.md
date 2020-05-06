@@ -19,3 +19,7 @@ TODO: Enable `yarn start` for comfortable development
 
 Thanks for
 * Boilerplate: https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate
+
+# License
+
+MIT
