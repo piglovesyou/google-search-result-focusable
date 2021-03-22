@@ -16,6 +16,20 @@ function main() {
   // To focus on the first candidate when user hit a first TAB key
   if (searchResults.length) {
     searchResults[0].focus();
+    forceMakeOutlineVisible();
+  }
+}
+
+function forceMakeOutlineVisible() {
+  for (const sheets of document.styleSheets) {
+    // XXX: Hack to finish iteration fast
+    if (sheets.cssRules[0].selectorText !== 'html') continue;
+    for (const [i, rule] of Object.entries(sheets.cssRules)) {
+      if (rule.selectorText && rule.selectorText.endsWith('[tabindex]')) {
+        sheets.deleteRule(i);
+        return;
+      }
+    }
   }
 }
 
