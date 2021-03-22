@@ -10,5 +10,5 @@ const closureCompiler = new ClosureCompiler({
 });
 
 closureCompiler.run((exitCode, stdOut, stdErr) => {
-  if (stdErr) throw stdErr;
+  if (exitCode !== 0) throw stdErr;
 });
