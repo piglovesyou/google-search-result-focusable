@@ -1,16 +1,14 @@
 # google-search-results-focusable
 
-Just hit TAB and ENTER in Google search results.
+A Google Chrome extension to select search results by Tab and Enter.
 
 * [👉 Install](https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee)
 * [👉 Github page](https://piglovesyou.github.io/google-search-result-focusable/)
 
 # Develop
 
-* In `chrome://extensions/` load "unpacked" of `./build`
 * Run `yarn build`
-
-TODO: Enable `yarn start` for comfortable development
+* In `chrome://extensions/` load "unpacked" of `./build`
 
 # Publish
 
