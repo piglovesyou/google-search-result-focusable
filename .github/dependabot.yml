@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "06:00"
+    timezone: Asia/Tokyo
+  ignore:
+  - dependency-name: google-closure-compiler
+    versions:
+    - 20210106.0.0
+    - 20210202.0.0
+    - 20210302.0.0
