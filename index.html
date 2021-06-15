@@ -1,64 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hit TAB and ENTER on Google Search Results - A Google Chrome Extension</title>
-    <meta name="description"
-          content="A Google Chrome Extension for ones who want to select Google Search results just by hitting Tab and Enter key."/>
-    <meta name="Keywords" content="shortcut,keymap,chrome extension,google search result"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      Hit TAB and ENTER on Google Search Results - A Google Chrome Extension
+    </title>
+    <meta
+      name="description"
+      content="A Google Chrome Extension for ones who want to select Google Search results just by hitting Tab and Enter key."
+    />
+    <meta
+      name="Keywords"
+      content="shortcut,keymap,chrome extension,google search result"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <style>
-        .container {max-width: 720px;}
+      .container {
+        max-width: 720px;
+      }
     </style>
-</head>
-<body>
-<div class="container text-center">
-    <h1 class="mt-4 mb-4"><span class="d-inline-block">Hit TAB and ENTER</span> <span class="d-inline-block">on Google Search Results</span>
-    </h1>
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1 class="mt-4 mb-4">
+        <span class="d-inline-block">Hit TAB and ENTER</span>
+        <span class="d-inline-block">on Google Search Results</span>
+      </h1>
 
-    <p class="mb-4">
-        <a href="https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee"
-           class="btn btn-primary btn-lg pl-4 pr-4">Visit the Chrome Extension page to install</a>
-    </p>
+      <p class="mb-4">
+        <a
+          href="https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee"
+          class="btn btn-primary btn-lg pl-4 pr-4"
+          >Visit the Chrome Extension page to install</a
+        >
+      </p>
 
-    <div class="mb-4">
-        <iframe class="align-bottom" width="560" height="315" src="https://www.youtube.com/embed/i0o0GM-W_AU" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+      <div class="mb-4">
+        <iframe
+          class="align-bottom"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/i0o0GM-W_AU"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <p>Yeah you're in the right place😃</p>
+
+      <p>
+        This is a Google Chrome Extension for ones who want to select a result
+        of Google Search just by hitting Tab and Enter key.
+      </p>
+
+      <p>
+        To install, please visit
+        <a
+          href="https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee"
+          >the chrome extension page</a
+        >.
+      </p>
+
+      <p>
+        Do you want to say something about this?
+        <a
+          href="https://github.com/piglovesyou/google-search-result-focusable/issues/new"
+          >Make a comment on GitHub Issues</a
+        >.
+      </p>
+      <p>
+        Mine is a very simple implementation, just manipulating
+        <code>tabindex</code> of the DOMs to utilize the native focus
+        functionality. Read and blame my source code on
+        <a
+          href="https://github.com/piglovesyou/google-search-result-focusable/blob/master/src/js/contentscript.js"
+          >the GitHub repository</a
+        >.
+      </p>
+      <p class="clearfix">
+        Hope you'll like it!
+        <a class="" href="https://github.com/piglovesyou">@piglovesyou</a>
+      </p>
     </div>
 
-    <p>Yeah you're in the right place😃</p>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-4588325-11"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-    <p>This is a Google Chrome Extension for ones who want to select a result of Google Search just by hitting Tab and
-        Enter key.</p>
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-    <p>To install, please visit <a
-            href="https://chrome.google.com/webstore/detail/google-search-results-foc/kkldgaaaafjoipnomoinnkccihdiffee">the
-        chrome extension page</a>.</p>
+      gtag("js", new Date());
 
-    <p>Do you want to say something about this? <a
-            href="https://github.com/piglovesyou/google-search-result-focusable/issues/new">Make a comment on GitHub
-        Issues</a>.
-    </p>
-    <p>Mine is a very simple implementation, just manipulating <code>tabindex</code> of the DOMs to utilize the native focus functionality. Read and blame my source
-        code
-        on <a href="https://github.com/piglovesyou/google-search-result-focusable/blob/master/src/js/contentscript.js">the
-            GitHub repository</a>.</p>
-    <p class="clearfix">Hope you'll like it! <a class="" href="https://github.com/piglovesyou">@piglovesyou</a></p>
-</div>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4588325-11"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {dataLayer.push(arguments);}
-
-  gtag('js', new Date());
-
-  gtag('config', 'UA-4588325-11');
-</script>
-
-</body>
+      gtag("config", "UA-4588325-11");
+    </script>
+  </body>
 </html>

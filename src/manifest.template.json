@@ -195,9 +195,7 @@
         "https://*.google.cat/*",
         "https://*.google.xxx/*"
       ],
-      "js": [
-        "./contentscript.bundle.js"
-      ],
+      "js": ["./contentscript.bundle.js"],
       "run_at": "document_end",
       "all_frames": false
     }
