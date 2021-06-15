@@ -22,14 +22,17 @@ function main() {
 
 function forceMakeOutlineVisible() {
   for (const sheets of document.styleSheets) {
-    // XXX: Hack to finish iteration fast
+    // Our target must have 'html' selectorText at first rule
+    if (!sheets.cssRules.length) continue;
     if (sheets.cssRules[0].selectorText !== 'html') continue;
+    let offset = 0
     for (const [i, rule] of Object.entries(sheets.cssRules)) {
-      if (rule.selectorText && rule.selectorText.endsWith('[tabindex]')) {
-        sheets.deleteRule(i);
-        return;
+      if (rule.cssText.endsWith('{ outline: 0px; }')) {
+        sheets.deleteRule(i - offset++);
       }
     }
+    // Must be 1 sheet we should concern
+    return;
   }
 }
 
