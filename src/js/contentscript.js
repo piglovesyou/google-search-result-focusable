@@ -22,9 +22,12 @@ function main() {
 
 function forceMakeOutlineVisible() {
   for (const sheets of document.styleSheets) {
-    if (!sheets.cssRules.length) continue;
-    // Our target must have 'html' selectorText at first rule
-    if (sheets.cssRules[0].selectorText !== "html") continue;
+    try {
+      if (!sheets.cssRules.length) continue;
+    } catch (e) {
+      // Sometimes DOMException occures on accessing cssRules
+      continue;
+    }
     let offset = 0;
     for (const [i, rule] of Object.entries(sheets.cssRules)) {
       if (rule.cssText.endsWith("{ outline: 0px; }")) {
