@@ -1,4 +1,4 @@
-const manifest = require("../src/manifest.template.json");
+const manifest = require("../src/manifest.template.js");
 const fs = require("fs");
 const path = require("path");
 

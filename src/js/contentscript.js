@@ -42,7 +42,11 @@ function findSearchResults() {
     .map((e) => e.parentNode)
     .filter(isAnchorElement);
 
-  const nestedResults = $$("#res h3 a:first-of-type, #foot a[href]");
+  const footerPagers = `[role="navigation"] [role="presentation"] a[href]`;
+  const categoryResults = '#res a[aria-level="3"]';
+  const nestedResults = Array.from(
+    $$(`#res h3 a:first-of-type, ${footerPagers}, ${categoryResults}`)
+  ).filter((e) => e.offsetParent);
 
   return [...topLevelResults, ...nestedResults];
 }

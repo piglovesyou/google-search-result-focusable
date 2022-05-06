@@ -6,9 +6,10 @@
     "clean": "rimraf build",
     "make_dir": "mkdir build",
     "generate_manifest": "node utils/generate_manifest",
+    "format": "prettier --write .",
     "compile": "node utils/compile",
     "pack_artifact": "zip -r build.zip build",
-    "build": "npm-run-all clean make_dir --parallel generate_manifest compile --sequential pack_artifact"
+    "build": "npm-run-all clean make_dir format --parallel generate_manifest compile --sequential pack_artifact"
   },
   "devDependencies": {
     "google-closure-compiler": "^20210808.0.0",
