@@ -1,17 +1,17 @@
 main();
 
 function main() {
+  const originalFocusableEls = $$("a[href],button,input,[tabindex]");
+  for (const el of originalFocusableEls) {
+    el.setAttribute("tabindex", "-1");
+  }
+
   const searchResults = findSearchResults();
 
-  const originalFocusableEls = $$("a[href],button,input,[tabindex]");
-  originalFocusableEls.forEach((el) => {
-    el.setAttribute("tabindex", "-1");
-  });
-
   const textboxEl = document.querySelector('input[type="text"]');
-  [textboxEl, ...searchResults].forEach((el) => {
-    el.setAttribute("tabindex", "1");
-  });
+  for (const e of searchResults.concat(textboxEl)) {
+    e.setAttribute("tabindex", "1");
+  }
 
   // To focus on the first candidate when user hit a first TAB key
   if (searchResults.length) {
@@ -48,7 +48,7 @@ function findSearchResults() {
     $$(`#res h3 a:first-of-type, ${footerPagers}, ${categoryResults}`)
   ).filter((e) => e.offsetParent);
 
-  return [...topLevelResults, ...nestedResults];
+  return topLevelResults.concat(nestedResults);
 }
 
 /**
