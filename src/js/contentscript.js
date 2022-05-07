@@ -1,25 +1,44 @@
+const resultContainer = `#res`; // Excludes Ads
+const searchResultSelector = `
+${resultContainer} h3,
+${resultContainer} [aria-level="3"],
+${resultContainer} [aria-level="4"],
+${resultContainer} h3 a:first-of-type,
+[role="navigation"] [role="presentation"] a[href]`;
+
 main();
 
 function main() {
-  const originalFocusableEls = $$("a[href],button,input,[tabindex]");
-  for (const el of originalFocusableEls) {
-    el.setAttribute("tabindex", "-1");
-  }
+  const searchResults = Array.from(
+    document.querySelectorAll(searchResultSelector)
+  )
+    .map(findAnchorParent)
+    .filter(isVisible);
 
-  const searchResults = findSearchResults();
+  const originalFocusableEls = document.querySelectorAll(
+    "a[href],button,input,[tabindex]"
+  );
+  for (const el of originalFocusableEls) el.setAttribute("tabindex", "-1");
 
   const textboxEl = document.querySelector('input[type="text"]');
-  for (const e of searchResults.concat(textboxEl)) {
+  for (const e of searchResults.concat(textboxEl))
     e.setAttribute("tabindex", "1");
-  }
 
-  // To focus on the first candidate when user hit a first TAB key
-  if (searchResults.length) {
-    searchResults[0].focus();
+  // The above selector doesn't guarantee the order of search results.
+  // We have to query again to find the first search result.
+  const firstResult = document.querySelector(`a[tabindex="1"]`);
+
+  // Focus on the first result
+  if (firstResult) {
+    firstResult.focus();
     forceMakeOutlineVisible();
   }
 }
 
+/**
+ * Google does some magic to control focus outline, which prevents us to draw outline on what we want.
+ * This solves it.
+ */
 function forceMakeOutlineVisible() {
   for (const sheets of document.styleSheets) {
     try {
@@ -37,33 +56,23 @@ function forceMakeOutlineVisible() {
   }
 }
 
-function findSearchResults() {
-  const topLevelResults = Array.from($$("#res h3"))
-    .map((e) => e.parentNode)
-    .filter(isAnchorElement);
-
-  const footerPagers = `[role="navigation"] [role="presentation"] a[href]`;
-  const categoryResults = '#res a[aria-level="3"]';
-  const nestedResults = Array.from(
-    $$(`#res h3 a:first-of-type, ${footerPagers}, ${categoryResults}`)
-  ).filter((e) => e.offsetParent);
-
-  return topLevelResults.concat(nestedResults);
+function findAnchorParent(e) {
+  return findParent(e, isAnchor, 3);
 }
 
-/**
- * @param {Element} e
- * @returns {boolean}
- */
-function isAnchorElement(e) {
+function findParent(el, fn, maxUp = Infinity) {
+  let count = 0;
+  let parent = el;
+  while (parent && count++ <= maxUp) {
+    if (fn(parent)) return parent;
+    parent = parent.parentNode;
+  }
+}
+
+function isVisible(e) {
+  return e && Boolean(e.offsetParent);
+}
+
+function isAnchor(e) {
   return e.tagName === "A";
-}
-
-/**
- * @param {string} sel
- * @param {Element=} parent
- * @returns {Iterable!}
- */
-function $$(sel, parent) {
-  return /** @type {Iterable!} */ ((parent || document).querySelectorAll(sel));
 }
