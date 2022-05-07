@@ -4,7 +4,7 @@
 
 The source code of Google Chrome Extension, Hit TAB and ENTER on Google Search Results.
 
-[👉 Install it from chrome web store](https://user-images.githubusercontent.com/217530/167257919-0146a249-eaff-4090-b401-b8763c40faef.png)
+[👉 Install it from chrome web store](https://user-images.githubusercontent.com/217530/167258080-5a322f3c-65ca-42ce-8fd1-9a5686b98698.png)
 
 # Develop
 
