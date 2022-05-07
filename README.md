@@ -1,4 +1,4 @@
-# Hit TAB and ENTER on Google Search Results
+# Hit TAB and ENTER on Google Search Results [![Node.js CI](https://github.com/piglovesyou/google-search-result-focusable/actions/workflows/node.js.yml/badge.svg)](https://github.com/piglovesyou/google-search-result-focusable/actions/workflows/node.js.yml)
 
 <img width="200" src="https://user-images.githubusercontent.com/217530/167242628-2d66241d-e892-4908-ad3d-c7bf02860288.png" />
 
