@@ -1,10 +1,10 @@
 # Hit TAB and ENTER on Google Search Results [![Node.js CI](https://github.com/piglovesyou/google-search-result-focusable/actions/workflows/node.js.yml/badge.svg)](https://github.com/piglovesyou/google-search-result-focusable/actions/workflows/node.js.yml)
 
-<img width="200" src="https://user-images.githubusercontent.com/217530/167242628-2d66241d-e892-4908-ad3d-c7bf02860288.png" />
+[![image](https://user-images.githubusercontent.com/217530/167819535-43da638e-7521-4847-be57-abd9fea154c6.png)](https://chrome.google.com/webstore/detail/hit-tab-and-enter-on-goog/kkldgaaaafjoipnomoinnkccihdiffee)
 
 The source code of Google Chrome Extension, Hit TAB and ENTER on Google Search Results.
 
-[👉 Install it from chrome web store](https://user-images.githubusercontent.com/217530/167258080-5a322f3c-65ca-42ce-8fd1-9a5686b98698.png)
+[👉 Install it from chrome web store](https://chrome.google.com/webstore/detail/hit-tab-and-enter-on-goog/kkldgaaaafjoipnomoinnkccihdiffee)
 
 # Develop
 
