@@ -15,6 +15,7 @@ The source code of Google Chrome Extension, Hit TAB and ENTER on Google Search R
 # Publish (for me)
 
 - `yarn build`
+- `yarn version  # specify new version`
 - Upload `build.zip` to https://chrome.google.com/webstore/developer/dashboard
 
 # License
