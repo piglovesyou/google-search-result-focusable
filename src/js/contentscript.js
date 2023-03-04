@@ -1,3 +1,4 @@
+const searchTextboxSelector = '[name="q"]';
 const resultContainer = `#res`; // Excludes Ads
 const searchResultSelector = `
 ${resultContainer} h3,
@@ -18,11 +19,14 @@ function main() {
   const originalFocusableEls = document.querySelectorAll(
     "a[href],button,input,[tabindex]"
   );
-  for (const el of originalFocusableEls) el.setAttribute("tabindex", "-1");
+  for (const el of originalFocusableEls) {
+    el.setAttribute("tabindex", "-1");
+  }
 
-  const textboxEl = document.querySelector('input[type="text"]');
-  for (const e of searchResults.concat(textboxEl))
+  const textboxEl = document.querySelector(searchTextboxSelector);
+  for (const e of searchResults.concat(textboxEl)) {
     e.setAttribute("tabindex", "1");
+  }
 
   // The above selector doesn't guarantee the order of search results.
   // We have to query again to find the first search result.
