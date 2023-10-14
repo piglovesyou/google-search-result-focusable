@@ -6,22 +6,29 @@ ${resultContainer} [aria-level="3"],
 ${resultContainer} [aria-level="4"],
 ${resultContainer} h3 a:first-of-type,
 [role="navigation"] [role="presentation"] a[href]`
+const outlineTrimmerSelector1 = "snf"
+const outlineTrimmerSelector2 = "snc"
 
 main()
 
 function main() {
+    // Get references to search result items
+    const textboxEl = document.querySelector(searchTextboxSelector)
     const searchResults = Array.from(document.querySelectorAll(searchResultSelector))
         .map(findAnchorParent)
         .filter(isVisible)
 
+    // Make original focusable elements unfocusable
     const originalFocusableEls = document.querySelectorAll("a[href],button,input,[tabindex]")
     for (const el of originalFocusableEls) {
         el.setAttribute("tabindex", "-1")
     }
 
-    const textboxEl = document.querySelector(searchTextboxSelector)
-    for (const e of searchResults.concat(textboxEl)) {
-        e.setAttribute("tabindex", "1")
+    // Make search result items focusable
+    textboxEl.setAttribute("tabindex", "1")
+    for (const el of searchResults) {
+        el.setAttribute("tabindex", "1")
+        forceDisableTrimmingToMakeOutlineVisible(el)
     }
 
     // The above selector doesn't guarantee the order of search results.
@@ -53,6 +60,40 @@ function forceMakeOutlineVisible() {
                 sheets.deleteRule(i - offset++)
             }
         }
+    }
+}
+
+/**
+ * Weird styles trim left side of outline, which doesn't look beautiful. This fixes it.
+ */
+function forceDisableTrimmingToMakeOutlineVisible(el) {
+    // Nested item
+    const h3 = findParent(el, (e) => e.tagName === "H3", 1)
+    if (h3) {
+        applyStyleToForceDisableTrimming(h3)
+    } else {
+        // Root item
+        const found1 = findParent(el, (e) => e.dataset && e.dataset[outlineTrimmerSelector1], 6)
+        if (found1) {
+            applyStyleToForceDisableTrimming(found1)
+            const found2 = findParent(found1, (e) => e.dataset && e.dataset[outlineTrimmerSelector2], 2)
+            if (found2) {
+                applyStyleToForceDisableTrimming(found2)
+            } else {
+                warn(outlineTrimmerSelector2)
+            }
+        } else {
+            // There are cases the outline trimmer doesn't exist.
+        }
+    }
+
+    function warn(selector) {
+        console.warn(`[google-search-result-focusable] Couldn't find outline trimmer: ${selector}`)
+    }
+
+    function applyStyleToForceDisableTrimming(e) {
+        e.style.overflow = "visible"
+        e.style.contain = "layout"
     }
 }
 
