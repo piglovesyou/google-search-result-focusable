@@ -8,15 +8,15 @@ The source code of Google Chrome Extension, Hit TAB and ENTER on Google Search R
 
 # Develop
 
-- Run `yarn build`
-- In `chrome://extensions/` load "unpacked" of `./build`
-- Verify it in Google search result page
+-   Run `yarn build`
+-   In `chrome://extensions/` load "unpacked" of `./build`
+-   Verify it in Google search result page
 
 # Publish (for me)
 
-- `yarn build`
-- `yarn version  # specify new version`
-- Upload `build.zip` to https://chrome.google.com/webstore/developer/dashboard
+-   `yarn build`
+-   `yarn version  # specify new version`
+-   Upload `build.zip` to https://chrome.google.com/webstore/developer/dashboard
 
 # License
 
