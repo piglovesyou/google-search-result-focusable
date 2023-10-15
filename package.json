@@ -1,6 +1,6 @@
 {
     "name": "google-search-results-focusable",
-    "version": "0.6.2",
+    "version": "0.6.3",
     "description": "Move and choose a Google search result quickly with TAB and ENTER keys",
     "prettier": {
         "semi": false,
