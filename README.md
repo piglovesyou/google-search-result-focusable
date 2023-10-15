@@ -8,8 +8,16 @@ The source code of Google Chrome Extension, Hit TAB and ENTER on Google Search R
 
 # Develop
 
--   Run `yarn build`
+Once:
+
+-   `brew install pre-install`
+-   `pre-commit install`
+-   `yarn build`
 -   In `chrome://extensions/` load "unpacked" of `./build`
+
+Every time you modify the code:
+
+-   `yarn build`
 -   Verify it in Google search result page
 
 # Publish (for me)
