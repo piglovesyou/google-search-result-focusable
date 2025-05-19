@@ -1,8 +1,1 @@
-.DS_Store
-node_modules
-build
-secrets.*.js
-/.idea
-/*.iml
-*.log
-*.zip
+(and minor)
